@@ -27,14 +27,31 @@
     }
 
     .hero {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      background-image: url("vitrine.png");
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+
+    background-image: url("vitrine.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* TABLETTE */
+@media (max-width: 1000px) {
+    .hero {
+        background-position: center center;
     }
+}
+
+/* TELEPHONE */
+@media (max-width: 768px) {
+    .hero {
+        background-image: url("vitrine-mobile.png");
+        background-size: cover;
+        background-position: center top;
+        min-height: 100svh;
+    }
+}
 
     .search-zone {
       position: absolute;
