@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supintelligence</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: #05030d;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .hero {
+      width: 100%;
+      min-height: 100vh;
+      background-image: url("vitrine.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        background-size: contain;
+        background-position: top center;
+        min-height: 100vh;
+        background-color: #05030d;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero"></div>
+</body>
+</html>
