@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Supintelligence</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supremintelligence</title>
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     html, body {
       width: 100%;
       min-height: 100%;
       background: #05030d;
-    }
-
-    body {
       overflow-x: hidden;
     }
 
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .hero {
+      position: relative;
       width: 100%;
       min-height: 100vh;
       background-image: url("vitrine.png");
@@ -31,18 +36,283 @@
       background-repeat: no-repeat;
     }
 
+    .search-zone {
+      position: absolute;
+      left: 3%;
+      bottom: 21%;
+      width: 52%;
+      max-width: 900px;
+      min-width: 280px;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: rgba(20, 8, 48, 0.45);
+      border: 2px solid rgba(144, 90, 255, 0.7);
+      box-shadow:
+        0 0 18px rgba(140, 0, 255, 0.35),
+        0 0 40px rgba(68, 0, 255, 0.15),
+        inset 0 0 20px rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+    }
+
+    .search-bar:focus-within {
+      box-shadow:
+        0 0 24px rgba(181, 73, 255, 0.55),
+        0 0 55px rgba(68, 0, 255, 0.25),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .icon-btn,
+    .voice-btn {
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      color: white;
+      font-size: 34px;
+      line-height: 1;
+      background: radial-gradient(circle at 30% 30%, #8d2dff, #3a0b80);
+      box-shadow: 0 0 18px rgba(173, 92, 255, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .icon-btn:hover,
+    .voice-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 22px rgba(173, 92, 255, 0.65);
+    }
+
+    .icon-btn:active,
+    .voice-btn:active {
+      transform: scale(0.98);
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 1.2rem;
+      padding: 0 10px;
+    }
+
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .mic-btn {
+      font-size: 26px;
+      background: transparent;
+      box-shadow: none;
+      width: auto;
+      height: auto;
+      color: #ffffff;
+    }
+
+    .voice-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #56d8ff, #4b40ff 45%, #9a2dff 100%);
+      box-shadow: 0 0 25px rgba(86, 216, 255, 0.5);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: pulse 2s infinite;
+    }
+
+    .bars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 22px;
+    }
+
+    .bars span {
+      width: 4px;
+      border-radius: 2px;
+      background: white;
+      animation: equalizer 1s infinite ease-in-out;
+    }
+
+    .bars span:nth-child(1) { height: 10px; animation-delay: 0s; }
+    .bars span:nth-child(2) { height: 18px; animation-delay: 0.15s; }
+    .bars span:nth-child(3) { height: 26px; animation-delay: 0.3s; }
+    .bars span:nth-child(4) { height: 16px; animation-delay: 0.45s; }
+
+    .search-note {
+      margin-top: 10px;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.95rem;
+      text-shadow: 0 0 10px rgba(0,0,0,0.35);
+    }
+
+    .shake {
+      animation: shake 0.35s ease;
+    }
+
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 18px rgba(86,216,255,0.35); }
+      50%  { box-shadow: 0 0 35px rgba(165,70,255,0.6); }
+      100% { box-shadow: 0 0 18px rgba(86,216,255,0.35); }
+    }
+
+    @keyframes equalizer {
+      0%, 100% { transform: scaleY(0.7); opacity: 0.8; }
+      50% { transform: scaleY(1.2); opacity: 1; }
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-4px); }
+      100% { transform: translateX(0); }
+    }
+
+    @media (max-width: 1100px) {
+      .search-zone {
+        width: 70%;
+        bottom: 16%;
+      }
+    }
+
     @media (max-width: 768px) {
       .hero {
-        background-size: contain;
-        background-position: top center;
-        min-height: 100vh;
-        background-color: #05030d;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .search-zone {
+        left: 5%;
+        right: 5%;
+        width: auto;
+        bottom: 8%;
+      }
+
+      .search-bar {
+        padding: 10px 12px;
+        gap: 10px;
+      }
+
+      .icon-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 28px;
+      }
+
+      .voice-btn {
+        width: 52px;
+        height: 52px;
+      }
+
+      .search-input {
+        font-size: 1rem;
+      }
+
+      .search-note {
+        font-size: 0.82rem;
       }
     }
   </style>
 </head>
-
 <body>
-  <div class="hero"></div>
+  <div class="hero">
+    <div class="search-zone">
+      <div class="search-bar" id="searchBar">
+        <button class="icon-btn" id="plusBtn" title="Effacer">+</button>
+
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Posez votre question..."
+        />
+
+        <button class="icon-btn mic-btn" id="micBtn" title="Micro">🎤</button>
+
+        <button class="voice-btn" id="searchBtn" title="Envoyer vers ChatGPT">
+          <div class="bars">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+
+      <div class="search-note" id="searchNote">
+        Saisissez une recherche puis appuyez sur Entrée ou sur le bouton lumineux.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const plusBtn = document.getElementById("plusBtn");
+    const micBtn = document.getElementById("micBtn");
+    const searchBar = document.getElementById("searchBar");
+    const searchNote = document.getElementById("searchNote");
+
+    function animateError() {
+      searchBar.classList.remove("shake");
+      void searchBar.offsetWidth;
+      searchBar.classList.add("shake");
+    }
+
+    function sendToChatGPT() {
+      const query = input.value.trim();
+
+      if (!query) {
+        searchNote.textContent = "Veuillez écrire une question avant d’envoyer.";
+        animateError();
+        return;
+      }
+
+      // Copie la question dans le presse-papiers
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(query).catch(() => {});
+      }
+
+      // Ouvre ChatGPT dans un nouvel onglet
+      window.open("https://chatgpt.com/", "_blank");
+
+      searchNote.textContent = "Recherche copiée. Collez-la dans ChatGPT avec Ctrl + V.";
+    }
+
+    searchBtn.addEventListener("click", sendToChatGPT);
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        sendToChatGPT();
+      }
+    });
+
+    plusBtn.addEventListener("click", function () {
+      input.value = "";
+      input.focus();
+      searchNote.textContent = "Champ effacé. Saisissez une nouvelle recherche.";
+    });
+
+    micBtn.addEventListener("click", function () {
+      searchNote.textContent = "Le bouton micro est prêt visuellement. On peut ajouter la dictée ensuite si tu veux.";
+    });
+  </script>
 </body>
 </html>
