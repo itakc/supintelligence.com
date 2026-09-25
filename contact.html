@@ -236,48 +236,46 @@ Send us a message for Sale
 </p>
 
 
-<form action="mailto:doro92100@gmail.com"
-method="post"
-enctype="text/plain">
+<form action="https://api.web3forms.com/submit" method="POST">
 
+  <input type="hidden" name="access_key" value="667bd089-6d9a-4377-a6f4-c40179747bd9">
 
-<label>Name *</label>
+  <input
+    type="hidden"
+    name="subject"
+    value="Nouveau message depuis Supremintelligence"
+  >
 
-<input
-type="text"
-name="Name"
-required>
+  <label>Name *</label>
+  <input
+    type="text"
+    name="name"
+    required
+  >
 
+  <label>Email *</label>
+  <input
+    type="email"
+    name="email"
+    required
+  >
 
-<label>Email *</label>
+  <label>Subject *</label>
+  <input
+    type="text"
+    name="subject_user"
+    required
+  >
 
-<input
-type="email"
-name="Email"
-required>
+  <label>Message *</label>
+  <textarea
+    name="message"
+    required
+  ></textarea>
 
-
-<label>Subject *</label>
-
-<input
-type="text"
-name="Subject"
-required>
-
-
-<label>Message *</label>
-
-<textarea
-name="Message"
-required></textarea>
-
-
-<button type="submit">
-
-Send message
-
-</button>
-
+  <button type="submit">
+    Send message
+  </button>
 
 </form>
 
