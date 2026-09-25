@@ -152,6 +152,36 @@
       align-items: center;
       animation: pulse 2s infinite;
     }
+    .contact-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 28px;
+
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+
+    border: 1px solid #a335ff;
+    border-radius: 30px;
+
+    background: rgba(65, 0, 100, 0.55);
+
+    box-shadow:
+        0 0 10px #7b00ff,
+        0 0 25px rgba(160, 0, 255, 0.4);
+
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: #8c00ff;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px #b637ff,
+        0 0 35px #7200ff;
+}
 
     .bars {
       display: flex;
@@ -276,6 +306,7 @@
       <div class="search-note" id="searchNote">
         Enter a search term, then press Enter or the illuminated button.
       </div>
+       <a href="contact.html" class="contact-btn">Contact</a>
     </div>
   </div>
 
