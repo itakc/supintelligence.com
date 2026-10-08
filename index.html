@@ -1482,60 +1482,55 @@
   }
 
   .supremator-chat {
-    position: absolute;
+  position: absolute;
 
-    right: 0;
-    bottom: 100px;
+  right: 100px;
+  bottom: 0;
 
-    width: 365px;
+  width: 340px;
+  max-height: 470px;
 
-    border-radius: 22px;
+  border-radius: 22px;
+  overflow: hidden;
 
-    overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
 
-    opacity: 0;
+  transform:
+    translateX(15px)
+    scale(.96);
 
-    visibility: hidden;
+  transform-origin:
+    bottom right;
 
-    transform:
-      translateY(20px)
-      scale(.96);
+  transition:
+    opacity .3s ease,
+    transform .3s ease,
+    visibility .3s ease;
 
-    transform-origin:
-      bottom right;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(2, 20, 43, .78),
+      rgba(0, 12, 30, .74)
+    );
 
-    transition:
-      opacity .3s ease,
-      transform .3s ease,
-      visibility .3s ease;
+  border:
+    1px solid rgba(70, 210, 255, .40);
 
-    background:
-      linear-gradient(
-        145deg,
-        rgba(2, 20, 43, .98),
-        rgba(0, 12, 30, .97)
-      );
+  box-shadow:
+    0 0 30px rgba(0, 170, 255, .18),
+    0 20px 50px rgba(0, 0, 0, .45);
 
-    border:
-      1px solid rgba(70, 210, 255, .40);
-
-    box-shadow:
-      0 0 30px rgba(0, 170, 255, .18),
-      0 25px 70px rgba(0, 0, 0, .55);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-  }
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+}
 
   .supremator-chat.open {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-      translateY(0)
-      scale(1);
-  }
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0) scale(1);
+}
 
   .supremator-header {
     position: relative;
@@ -1631,7 +1626,7 @@
   }
 
   .supremator-messages {
-    height: 330px;
+    height: 210px;
 
     padding: 20px;
 
